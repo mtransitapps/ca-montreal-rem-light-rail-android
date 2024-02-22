@@ -4,7 +4,7 @@
     <bool name="next_gtfs_rts_frequency_available">false</bool>
     <string name="next_gtfs_rts_area_min_lat">45.438003</string>
     <string name="next_gtfs_rts_area_max_lat">45.500115</string>
-    <string name="next_gtfs_rts_area_min_lng">-73.56702</string>
+    <string name="next_gtfs_rts_area_min_lng">-73.566838</string>
     <string name="next_gtfs_rts_area_max_lng">-73.430645</string>
     <integer name="next_gtfs_rts_first_departure_in_sec">1709289000</integer><!-- 2024/03/01 05:30:00 EST -->
     <integer name="next_gtfs_rts_last_departure_in_sec">1717219800</integer><!-- 2024/06/01 01:30:00 EDT -->
