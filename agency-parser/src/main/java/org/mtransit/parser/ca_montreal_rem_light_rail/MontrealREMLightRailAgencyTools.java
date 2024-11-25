@@ -115,19 +115,20 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public int getStopId(@NotNull GStop gStop) {
-		//noinspection deprecation
+		//noinspection DiscouragedApi
 		final String parentStationId = gStop.getParentStationId();
-		if (parentStationId != null) {
-			switch (parentStationId) {
+		if (parentStationId != null && parentStationId.length() >= 6) {
+			String parentStationIdStartsWith = parentStationId.substring(0, 6);
+			switch (parentStationIdStartsWith) {
 			case "ST_DUQ":
 				return 10_004;
-			case "ST_GCT_1":
+			case "ST_GCT":
 				return 10_012;
-			case "ST_IDS_1":
+			case "ST_IDS":
 				return 10_008;
-			case "ST_PAN_1":
+			case "ST_PAN":
 				return 10_006;
-			case "ST_RIV_1":
+			case "ST_RIV":
 				return 10_001;
 			}
 		}
