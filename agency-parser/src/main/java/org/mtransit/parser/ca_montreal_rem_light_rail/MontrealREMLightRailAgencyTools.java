@@ -10,8 +10,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.mtransit.commons.CleanUtils;
 import org.mtransit.commons.Cleaner;
+import org.mtransit.commons.FeatureFlags;
 import org.mtransit.parser.DefaultAgencyTools;
 import org.mtransit.parser.MTLog;
+import org.mtransit.parser.gtfs.data.GRoute;
 import org.mtransit.parser.gtfs.data.GStop;
 import org.mtransit.parser.mt.data.MAgency;
 
@@ -62,9 +64,19 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 	public @Nullable Long convertRouteIdFromShortNameNotSupported(@NotNull String routeShortName) {
 		switch (routeShortName) {
 		case "A":
+		case "S2":
 			return 1001L;
 		}
 		return super.convertRouteIdFromShortNameNotSupported(routeShortName);
+	}
+
+	@Override
+	public @NotNull String getRouteShortName(@NotNull GRoute gRoute) {
+		if (FeatureFlags.F_USE_GTFS_ID_HASH_INT) {
+			//noinspection DiscouragedApi
+			return gRoute.getRouteId(); // use GTFS ID as route short name // used for GTFS-RT
+		}
+		return super.getRouteShortName(gRoute);
 	}
 
 	@Override
@@ -137,6 +149,10 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public @NotNull String getStopCode(@NotNull GStop gStop) {
+		if (FeatureFlags.F_USE_GTFS_ID_HASH_INT) {
+			//noinspection DiscouragedApi
+			return gStop.getStopId(); // use GTFS ID as stop code // used for GTFS-RT
+		}
 		return EMPTY; // no user facing stop code IRL
 	}
 }

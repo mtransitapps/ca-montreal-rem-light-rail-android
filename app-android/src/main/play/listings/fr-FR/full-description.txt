@@ -1,6 +1,6 @@
 Cette application ajoute les informations du train léger REM de Montréal à MonTransit.
 
-L'app contient les horaires (hors-ligne) et les dernières nouvelles de @REMgrandmtl et @REM_infoservice sur Twitter.
+L'app contient les horaires planifiés ainsi que l'état de service en temps réel et les dernières nouvelles de @REMgrandmtl et @REM_infoservice sur Twitter.
 
 Le train léger du REM dessert Montréal, Brossard au Québec, Canada.
 
@@ -18,4 +18,4 @@ https://github.com/mtransitapps/ca-montreal-rem-light-rail-android
 Cette application n'est pas associée à Réseau express métropolitain.
 
 Autorisations :
-- Autres: requis pour lire les nouvelles de Twitter
+- Autres: requis pour les états de service en temps réel et pour lire les nouvelles de Twitter

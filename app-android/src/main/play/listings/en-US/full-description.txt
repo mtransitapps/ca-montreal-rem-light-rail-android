@@ -1,6 +1,6 @@
 This application adds Montréal REM light rail information to MonTransit.
 
-This app contains the bus schedule (offline) and the latest news from @REMgrandmtl and @REM_infoservice on Twitter.
+This app provides the planned schedule as well as real time service statuses and news from exo.quebec and @REMgrandmtl and @REM_infoservice on Twitter.
 
 REM light rail serves Montréal, Brossard in Québec, Canada.
 
@@ -18,4 +18,4 @@ https://github.com/mtransitapps/ca-montreal-rem-light-rail-android
 This app is not related with Réseau express métropolitain.
 
 Permissions:
-- Other: required to read news from Twitter.
+- Other: required for real-time service statuses and news from Twitter.
