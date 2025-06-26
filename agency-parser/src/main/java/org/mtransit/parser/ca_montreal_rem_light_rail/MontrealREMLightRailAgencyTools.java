@@ -33,11 +33,6 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 		return LANG_FR;
 	}
 
-	@Override
-	public boolean defaultExcludeEnabled() {
-		return true;
-	}
-
 	@NotNull
 	@Override
 	public String getAgencyName() {
