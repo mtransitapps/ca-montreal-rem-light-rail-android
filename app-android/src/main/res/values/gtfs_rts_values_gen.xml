@@ -5,5 +5,5 @@
     <string name="gtfs_rts_agency_id">REM</string>
     <integer name="gtfs_rts_agency_type">0</integer>
     <string name="gtfs_rts_timezone">America/Montreal</string>
-    <string name="gtfs_rts_color">72A300</string>
+    <string name="gtfs_rts_color">73A400</string>
 </resources>
