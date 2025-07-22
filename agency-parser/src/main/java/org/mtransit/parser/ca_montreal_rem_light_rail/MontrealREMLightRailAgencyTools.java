@@ -58,9 +58,16 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 	@Override
 	public @Nullable Long convertRouteIdFromShortNameNotSupported(@NotNull String routeShortName) {
 		switch (routeShortName) {
+		case "A4-A1":
+		case "S1":
+			return 4001L; // Deux Montagnes - Brossard
 		case "A":
+		case "A0-A1":
 		case "S2":
-			return 1001L;
+			return 1001L; // Bois Franc - Brossard // Gare Centrale - Brossard
+		case "A3-A1":
+		case "S3":
+			return 3001L; // Anse-à-l'Orme - Brossard
 		}
 		return super.convertRouteIdFromShortNameNotSupported(routeShortName);
 	}
@@ -127,16 +134,52 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 		if (parentStationId != null && parentStationId.length() >= 6) {
 			String parentStationIdStartsWith = parentStationId.substring(0, 6);
 			switch (parentStationIdStartsWith) {
+			case "ST_A40":
+				return 10_002;
+			case "ST_BFC":
+				return 10_005;
+			case "ST_CAN":
+				return 10_007;
+			case "ST_DEM":
+				return 10_009;
+			case "ST_DSO":
+				return 10_010;
 			case "ST_DUQ":
 				return 10_004;
-			case "ST_GCT":
+			case "ST_EDM":
+				return 10_011;
+			case "ST_GCT": // ST_GCT_1
 				return 10_012;
-			case "ST_IDS":
+			case "ST_GRM":
+				return 10_013;
+			case "ST_IDS": // ST_IDS_1
 				return 10_008;
+			case "ST_ILB":
+				return 10_014;
+			case "ST_JYV":
+				return 10_015;
+			case "ST_MCG":
+				return 10_016;
+			case "ST_MPE":
+				return 10_017;
+			case "ST_MRL":
+				return 10_018;
 			case "ST_PAN":
 				return 10_006;
-			case "ST_RIV":
+			case "ST_PTC":
+				return 10_019;
+			case "ST_RIV": // ST_RIV_1
 				return 10_001;
+			case "ST_ROX":
+				return 10_003;
+			case "ST_RUI":
+				return 10_020;
+			case "ST_SAB":
+				return 10_021;
+			case "ST_SDR":
+				return 10_022;
+			case "ST_SUN":
+				return 10_023;
 			}
 		}
 		throw new MTLog.Fatal("Unexpected stop ID for %s!", gStop.toStringPlus(true));
