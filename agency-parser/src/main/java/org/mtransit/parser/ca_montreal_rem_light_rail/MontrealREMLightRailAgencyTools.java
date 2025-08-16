@@ -104,11 +104,6 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 		return true;
 	}
 
-	@Override
-	public boolean allowDuplicateKeyError() {
-		return true; // 2025-08-13: duplicate keys in trips & calendar
-	}
-
 	@NotNull
 	@Override
 	public String cleanTripHeadsign(@NotNull String tripHeadsign) {
