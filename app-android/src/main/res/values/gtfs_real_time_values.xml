@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation,UnusedResources">
-    <integer name="gtfs_real_time_db_version">1</integer>
+    <integer name="gtfs_real_time_db_version">2</integer>
     <string name="gtfs_real_time_for_poi_authority">@string/gtfs_rts_authority</string>
     <bool name="gtfs_real_time_stop_id_is_stop_code">true</bool>
     <bool name="gtfs_real_time_route_id_is_route_short_name">true</bool>
-    <string name="gtfs_real_time_agency_service_alerts_url">https://dashboard.transitapp.com/api/alerts/rem_montreal</string>
+    <string name="gtfs_real_time_agency_service_alerts_url">https://storage.googleapis.com/transit-terminal-alerts-bucket-production/rem_montreal.pb</string>
     <string name="gtfs_real_time_agency_id">REM</string>
     <string name="gtfs_real_time_agency_bold_words" />
     <string-array name="gtfs_real_time_agency_extra_languages">
