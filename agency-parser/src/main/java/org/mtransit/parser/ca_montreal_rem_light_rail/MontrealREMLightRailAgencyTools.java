@@ -73,15 +73,6 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 	}
 
 	@Override
-	public @NotNull String getRouteShortName(@NotNull GRoute gRoute) {
-		if (!FeatureFlags.F_USE_GTFS_ID_HASH_INT) {
-			//noinspection DiscouragedApi
-			return gRoute.getRouteId(); // use GTFS ID as route short name // used for GTFS-RT
-		}
-		return super.getRouteShortName(gRoute);
-	}
-
-	@Override
 	public boolean defaultRouteLongNameEnabled() {
 		return true;
 	}
@@ -187,10 +178,6 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public @NotNull String getStopCode(@NotNull GStop gStop) {
-		if (!FeatureFlags.F_USE_GTFS_ID_HASH_INT) {
-			//noinspection DiscouragedApi
-			return gStop.getStopId(); // use GTFS ID as stop code // used for GTFS-RT
-		}
 		return EMPTY; // no user facing stop code IRL
 	}
 }
