@@ -3,14 +3,16 @@ package org.mtransit.parser.ca_montreal_rem_light_rail;
 import static org.mtransit.commons.RegexUtils.BEGINNING;
 import static org.mtransit.commons.RegexUtils.DIGIT_CAR;
 import static org.mtransit.commons.RegexUtils.END;
+import static org.mtransit.commons.RegexUtils.WHITESPACE_CAR;
+import static org.mtransit.commons.RegexUtils.atLeast;
 import static org.mtransit.commons.RegexUtils.group;
+import static org.mtransit.commons.RegexUtils.oneOrMore;
 import static org.mtransit.parser.Constants.EMPTY;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.mtransit.commons.CleanUtils;
 import org.mtransit.commons.Cleaner;
-import org.mtransit.commons.FeatureFlags;
 import org.mtransit.parser.DefaultAgencyTools;
 import org.mtransit.parser.MTLog;
 import org.mtransit.parser.gtfs.data.GRoute;
@@ -51,6 +53,16 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 	}
 
 	@Override
+	public @Nullable String getRouteIdCleanupRegex() {
+		return "\\d$"; // remove end with digit
+	}
+
+	@Override
+	public boolean verifyRouteIdsUniqueness() {
+		return false; // merge routes
+	}
+
+	@Override
 	public boolean useRouteShortNameForRouteId() {
 		return true;
 	}
@@ -70,6 +82,30 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 			return 3001L; // Anse-à-l'Orme - Brossard
 		}
 		return super.convertRouteIdFromShortNameNotSupported(routeShortName);
+	}
+
+	@Override
+	public @NotNull String cleanRouteShortName(@NotNull String routeShortName) {
+		switch (routeShortName) {
+		case "A1":
+			return "A4-A1";
+		}
+		return super.cleanRouteShortName(routeShortName);
+	}
+
+	@Override
+	public @NotNull String getRouteLongName(@NotNull GRoute gRoute) {
+		switch (gRoute.getRouteShortName()) {
+		case "A1":
+		case "A4-A1":
+			return "Deux-Montagnes / Brossard";
+		}
+		return super.getRouteLongName(gRoute);
+	}
+
+	@Override
+	public @Nullable String getServiceIdCleanupRegex() {
+		return "^(RIV-DEM-)|(\\.xml)$";
 	}
 
 	@Override
@@ -95,9 +131,16 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 		return true;
 	}
 
+	private static final Cleaner STARTS_WITH_A_DIGIT_DASH_ = new Cleaner(
+			group(BEGINNING + "A" + oneOrMore(DIGIT_CAR) + oneOrMore(WHITESPACE_CAR) + "-" + oneOrMore(WHITESPACE_CAR)),
+			EMPTY,
+			true
+	);
+
 	@NotNull
 	@Override
 	public String cleanTripHeadsign(@NotNull String tripHeadsign) {
+		tripHeadsign = STARTS_WITH_A_DIGIT_DASH_.clean(tripHeadsign);
 		tripHeadsign = CleanUtils.keepToFR(tripHeadsign);
 		tripHeadsign = CleanUtils.cleanBounds(getFirstLanguageNN(), tripHeadsign);
 		tripHeadsign = CleanUtils.cleanStreetTypesFRCA(tripHeadsign);
