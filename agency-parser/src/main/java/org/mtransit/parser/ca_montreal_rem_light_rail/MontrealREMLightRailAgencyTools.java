@@ -6,6 +6,7 @@ import static org.mtransit.commons.RegexUtils.END;
 import static org.mtransit.commons.RegexUtils.WHITESPACE_CAR;
 import static org.mtransit.commons.RegexUtils.atLeast;
 import static org.mtransit.commons.RegexUtils.group;
+import static org.mtransit.commons.RegexUtils.matchGroup;
 import static org.mtransit.commons.RegexUtils.oneOrMore;
 import static org.mtransit.parser.Constants.EMPTY;
 
@@ -105,7 +106,7 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public @Nullable String getServiceIdCleanupRegex() {
-		return "^(ES-\\d{2}[A-Z]+-)?(RIV-DEM-)|(\\.xml)$";
+		return "^(ES-\\d{2}[A-Z]+-)?(RIV-DEM-\\d{2}[A-Z])|(\\.xml)$";
 	}
 
 	@Override
@@ -133,12 +134,12 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public @Nullable String getTripIdCleanupRegex() {
-		return "^(ES-\\d{2}[A-Z]+-)?(RIV-DEM-)|(\\.xml)";
+		return "^(ES-\\d{2}[A-Z]+-)?(RIV-DEM-\\d{2}[A-Z])|(\\.xml)";
 	}
 
 	private static final Cleaner STARTS_WITH_A_DIGIT_DASH_ = new Cleaner(
-			group(BEGINNING + "A" + oneOrMore(DIGIT_CAR) + oneOrMore(WHITESPACE_CAR) + "-" + oneOrMore(WHITESPACE_CAR)),
-			EMPTY,
+			group(BEGINNING + group("A" + oneOrMore(DIGIT_CAR)) + oneOrMore(WHITESPACE_CAR) + "-" + oneOrMore(WHITESPACE_CAR)),
+			matchGroup(2)+"-",
 			true
 	);
 
