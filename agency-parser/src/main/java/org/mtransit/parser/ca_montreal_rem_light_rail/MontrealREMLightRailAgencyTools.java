@@ -139,7 +139,7 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 
 	private static final Cleaner STARTS_WITH_A_DIGIT_DASH_ = new Cleaner(
 			group(BEGINNING + group("A" + oneOrMore(DIGIT_CAR)) + oneOrMore(WHITESPACE_CAR) + "-" + oneOrMore(WHITESPACE_CAR)),
-			matchGroup(2)+"-",
+			matchGroup(2)+":",
 			true
 	);
 
