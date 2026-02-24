@@ -1,5 +1,6 @@
 # ORIGINAL FILE: https://github.com/mtransitapps/commons/tree/master/shared-overwrite
 name: MT sync code & data # download & parse
+# this comment line will be removed by next CI run
 on:
   pull_request: # automatically skip download data & app release
   workflow_dispatch: # manual
