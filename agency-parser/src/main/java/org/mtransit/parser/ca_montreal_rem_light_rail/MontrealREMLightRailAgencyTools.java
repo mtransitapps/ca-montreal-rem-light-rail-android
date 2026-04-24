@@ -106,7 +106,7 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public @Nullable String getServiceIdCleanupRegex() {
-		return "^(ES-\\d{2}[A-Z]+-)?(RIV-DEM-\\d{2}[A-Z])|(\\.xml)$";
+		return "^(ES-\\d{2}[A-Z]+-)?(RIV-DEM-\\d{2}[A-Z])|\(gtfs\)|(\\.xml)$";
 	}
 
 	@Override
