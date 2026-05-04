@@ -1,0 +1,7 @@
+{
+    "direction_headsign_cleaners": [
+        {
+            "regex": "^A[\\d]+\\s*\\-\\s*"
+        }
+    ]
+}
