@@ -101,7 +101,7 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public @Nullable String getServiceIdCleanupRegex() {
-		return "^(MAV\\-RDS\\-)|((\\-\\(GTFS\\))?(\\.xml(\\s\\(GTFS\\))?(\\.xml)?))$";
+		return "^((MAV\\-)?RDS\\-)|((\\-\\(GTFS\\))?(\\.xml(\\s\\(GTFS\\))?(\\.xml)?))$";
 	}
 
 	@Override
@@ -129,7 +129,7 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public @Nullable String getTripIdCleanupRegex() {
-		return "^(MAV\\-RDS\\-)|((\\-\\(GTFS\\))?(\\.xml(\\s\\(GTFS\\))?(\\.xml)?))";
+		return "^((MAV\\-)?RDS\\-)|((\\-\\(GTFS\\))?(\\.xml(\\s\\(GTFS\\))?(\\.xml)?))";
 	}
 
 	private static final Cleaner STARTS_WITH_A_DIGIT_DASH_ = new Cleaner(
