@@ -6,7 +6,7 @@
     <integer name="gtfs_rts_agency_type">0</integer>
     <string name="gtfs_rts_timezone">America/Montreal</string>
     <string name="gtfs_rts_color">72A300</string>
-    <string name="gtfs_rts_service_id_cleanup_regex">^(MAV\\-RDS\\-)|((\\-\\(GTFS\\))\?\\.xml)$</string>
+    <string name="gtfs_rts_service_id_cleanup_regex">^((MAV\\-)\?RDS\\-)|((\\-\\(GTFS\\))\?(\\.xml(\\s\\(GTFS\\))\?(\\.xml)\?))$</string>
     <string name="gtfs_rts_route_id_cleanup_regex">\\d$</string>
-    <string name="gtfs_rts_trip_id_cleanup_regex">^(MAV\\-RDS\\-)|((\\-\\(GTFS\\))\?\\.xml)</string>
+    <string name="gtfs_rts_trip_id_cleanup_regex">^((MAV\\-)\?RDS\\-)|((\\-\\(GTFS\\))\?(\\.xml(\\s\\(GTFS\\))\?(\\.xml)\?))</string>
 </resources>
