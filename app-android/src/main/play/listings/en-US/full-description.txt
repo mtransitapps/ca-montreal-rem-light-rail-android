@@ -2,7 +2,7 @@ This application adds Montréal REM light rail information to MonTransit.
 
 This app provides the planned schedule as well as real time service statuses and news from exo.quebec and @REMgrandmtl and @REM_infoservice on Twitter.
 
-REM light rail serves Montréal, Brossard in Québec, Canada.
+REM light rail serves Montréal, Brossard, Deux-Montagnes, Anse-à-l'Orme in Québec, Canada.
 
 Once this application is installed, the MonTransit app will display REM light rail information (schedule...).
 

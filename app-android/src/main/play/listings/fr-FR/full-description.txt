@@ -2,7 +2,7 @@ Cette application ajoute les informations du train léger REM de Montréal à Mo
 
 L'app contient les horaires planifiés ainsi que l'état de service en temps réel et les dernières nouvelles de @REMgrandmtl et @REM_infoservice sur Twitter.
 
-Le train léger du REM dessert Montréal, Brossard au Québec, Canada.
+Le train léger du REM dessert Montréal, Brossard, Deux-Montagnes, Anse-à-l'Orme au Québec, Canada.
 
 Une fois cette application installée, l'application MonTransit affichera les informations du train léger REM (horaires ...).
 
