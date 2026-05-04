@@ -4,7 +4,6 @@ import static org.mtransit.commons.RegexUtils.BEGINNING;
 import static org.mtransit.commons.RegexUtils.DIGIT_CAR;
 import static org.mtransit.commons.RegexUtils.END;
 import static org.mtransit.commons.RegexUtils.WHITESPACE_CAR;
-import static org.mtransit.commons.RegexUtils.atLeast;
 import static org.mtransit.commons.RegexUtils.group;
 import static org.mtransit.commons.RegexUtils.matchGroup;
 import static org.mtransit.commons.RegexUtils.oneOrMore;
@@ -71,16 +70,8 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 	@Override
 	public @Nullable Long convertRouteIdFromShortNameNotSupported(@NotNull String routeShortName) {
 		switch (routeShortName) {
-		case "A4-A1":
-		case "S1":
-			return 4001L; // Deux Montagnes - Brossard
-		case "A":
-		case "A0-A1":
-		case "S2":
-			return 1001L; // Bois Franc - Brossard // Gare Centrale - Brossard
-		case "A3-A1":
-		case "S3":
-			return 3001L; // Anse-à-l'Orme - Brossard
+		case "REM":
+			return 4001L; // A4 - Deux-Montagnes / A1 - Brossard
 		}
 		return super.convertRouteIdFromShortNameNotSupported(routeShortName);
 	}
@@ -89,7 +80,11 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 	public @NotNull String cleanRouteShortName(@NotNull String routeShortName) {
 		switch (routeShortName) {
 		case "A1":
-			return "A4-A1";
+		case "A0-A1":
+		case "A3-A1":
+		case "A4-A1":
+		case "REM":
+			return "REM";
 		}
 		return super.cleanRouteShortName(routeShortName);
 	}
@@ -106,7 +101,7 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public @Nullable String getServiceIdCleanupRegex() {
-		return "^(MAV\\-RDS\\-)|((\\-\\(GTFS\\))?\\.xml)$";
+		return "^(MAV\\-RDS\\-)|((\\-\\(GTFS\\))?(\\.xml(\\s\\(GTFS\\))?(\\.xml)?))$";
 	}
 
 	@Override
@@ -134,12 +129,12 @@ public class MontrealREMLightRailAgencyTools extends DefaultAgencyTools {
 
 	@Override
 	public @Nullable String getTripIdCleanupRegex() {
-		return "^(MAV\\-RDS\\-)|((\\-\\(GTFS\\))?\\.xml)";
+		return "^(MAV\\-RDS\\-)|((\\-\\(GTFS\\))?(\\.xml(\\s\\(GTFS\\))?(\\.xml)?))";
 	}
 
 	private static final Cleaner STARTS_WITH_A_DIGIT_DASH_ = new Cleaner(
 			group(BEGINNING + group("A" + oneOrMore(DIGIT_CAR)) + oneOrMore(WHITESPACE_CAR) + "-" + oneOrMore(WHITESPACE_CAR)),
-			matchGroup(2)+":",
+			matchGroup(2) + ":",
 			true
 	);
 
