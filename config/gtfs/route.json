@@ -1,7 +1,146 @@
 {
-    "direction_headsign_cleaners": [
-        {
-            "regex": "^A[\\d]+\\s*\\-\\s*"
-        }
-    ]
+  "default_route_id_enabled": true,
+  "route_id_cleanup_regex": "\\d$",
+  "route_id_cleanup_regex_comment": "remove end with digit",
+  "route_id_not_unique_allowed": true,
+  "use_route_short_name_for_route_id": true,
+  "route_short_name_to_route_id_configs": [
+    {
+      "route_short_name": "REM",
+      "route_id": 4001
+    }
+  ],
+  "route_short_name_cleaners": [
+    {
+      "regex": ".+",
+      "replacement": "REM"
+    }
+  ],
+  "default_route_long_name_enabled": true,
+  "direction_finder_enabled": true,
+  "direction_headsign_cleaners": [
+    {
+      "regex": "^A[\\d]+\\s*\\-\\s*"
+    }
+  ],
+  "trip_id_cleanup_regex": "^((MAV-)?RDS-)|((-\\(GTFS\\))?(\\.xml(\\s\\(GTFS\\))?(\\.xml)?))",
+  "trip_headsign_cleaners": [
+    {
+      "regex": "(^(A\\d+)\\s+-\\s+)",
+      "ignore_case": true,
+      "replacement": "$2:"
+    }
+  ],
+  "use_parent_stop_id_for_stop_id": true,
+  "stop_id_cleanup_regex": "_\\d+$",
+  "stop_id_not_supported_configs": [
+    {
+      "original_stop_id": "ST_A40",
+      "stop_id_int": 10002
+    },
+    {
+      "original_stop_id": "ST_BFC",
+      "stop_id_int": 10005
+    },
+    {
+      "original_stop_id": "ST_CAN",
+      "stop_id_int": 10007
+    },
+    {
+      "original_stop_id": "ST_DEM",
+      "stop_id_int": 10009
+    },
+    {
+      "original_stop_id": "ST_DSO",
+      "stop_id_int": 10010
+    },
+    {
+      "original_stop_id": "ST_DUQ",
+      "stop_id_int": 10004
+    },
+    {
+      "original_stop_id": "ST_EDM",
+      "stop_id_int": 10011
+    },
+    {
+      "original_stop_id": "ST_GCT",
+      "stop_id_int": 10012
+    },
+    {
+      "original_stop_id": "ST_GRM",
+      "stop_id_int": 10013
+    },
+    {
+      "original_stop_id": "ST_IDS",
+      "stop_id_int": 10008
+    },
+    {
+      "original_stop_id": "ST_ILB",
+      "stop_id_int": 10014
+    },
+    {
+      "original_stop_id": "ST_JYV",
+      "stop_id_int": 10015
+    },
+    {
+      "original_stop_id": "ST_MCG",
+      "stop_id_int": 10016
+    },
+    {
+      "original_stop_id": "ST_MPE",
+      "stop_id_int": 10017
+    },
+    {
+      "original_stop_id": "ST_MRL",
+      "stop_id_int": 10018
+    },
+    {
+      "original_stop_id": "ST_PAN",
+      "stop_id_int": 10006
+    },
+    {
+      "original_stop_id": "ST_PTC",
+      "stop_id_int": 10019
+    },
+    {
+      "original_stop_id": "ST_RIV",
+      "stop_id_int": 10001
+    },
+    {
+      "original_stop_id": "ST_ROX",
+      "stop_id_int": 10003
+    },
+    {
+      "original_stop_id": "ST_RUI",
+      "stop_id_int": 10020
+    },
+    {
+      "original_stop_id": "ST_SAB",
+      "stop_id_int": 10021
+    },
+    {
+      "original_stop_id": "ST_SDR",
+      "stop_id_int": 10022
+    },
+    {
+      "original_stop_id": "ST_SUN",
+      "stop_id_int": 10023
+    }
+  ],
+  "stop_name_cleaners": [
+    {
+      "regex": "(^station )",
+      "ignore_case": true
+    },
+    {
+      "regex": "(( - )?quai \\d$)",
+      "ignore_case": true
+    }
+  ],
+  "stop_code_cleaners": [
+    {
+      "regex": ".*",
+      "regex_comment": "no user facing stop code IRL"
+    }
+  ]
 }
